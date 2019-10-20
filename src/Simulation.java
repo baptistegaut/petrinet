@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * The simulation class implement the interface petrinet
  * @author bgautier
  *
  */
@@ -11,17 +12,17 @@ public class Simulation implements Petrinet {
 
 
 	/**
-	 *
+	 * List of places
 	 */
 	private ArrayList<Place> places;
 
 	/**
-	 *
+	 * List of transitions
 	 */
 	private ArrayList<Transition> transitions;
 
 	/**
-	 *
+	 * List of edges
 	 */
 	private ArrayList<Edge> edges;
 
@@ -31,31 +32,42 @@ public class Simulation implements Petrinet {
 		edges = new ArrayList<Edge>();
 	}
 
+	/**
+	 * 
+	 * @return list of places
+	 */
 	public ArrayList<Place> getPlaces() {
 		return places;
 	}
 
+	/**
+	 * @return list of transitions
+	 */
 	public ArrayList<Transition> getTransitions() {
 		return transitions;
 	}
 
+	/**
+	 * @return list of edges
+	 */
 	public ArrayList<Edge> getEdges() {
 		return edges;
 	}
 
 	/**
-	 *
+	 * Create a new place
+	 *@param tokens 
 	 * 
 	 * @see petri.Petrinet#createPlace()
 	 */
-	@Override
+	 @Override
 	public void createPlace(int tokens) throws NegativeAmountOfTokenException {
 		Place p = new Place(tokens);
 		places.add(p);
 	}
 
 	/**
-	 *
+	 * Create a new transition
 	 * 
 	 * @see petri.Petrinet#createTransition()
 	 */
@@ -65,7 +77,12 @@ public class Simulation implements Petrinet {
 	}
 
 	/**
-	 *
+	 * Create a new Edge and adds it to the edges list
+	 * 
+	 * @param weight
+	 * @param transition
+	 * @param place
+	 * 
 	 * 
 	 * @see petri.Petrinet#createEdge()
 	 */
@@ -75,7 +92,10 @@ public class Simulation implements Petrinet {
 	}
 	
 	/**
-	 *
+	 * Create a new zeroEdge and adds it to the edges list
+	 * 
+	 * @param transition
+	 * @param place
 	 * 
 	 * @see petri.Petrinet#createZeroEdge()
 	 */
@@ -86,7 +106,10 @@ public class Simulation implements Petrinet {
 	}
 
 	/**
-	 *
+	 *Create a new EmptyEdge and adds it to the edges list
+	 * 
+	 * @param transition
+	 * @param place
 	 * 
 	 * @see petri.Petrinet#createEmptyingEdge()
 	 */
@@ -106,8 +129,8 @@ public class Simulation implements Petrinet {
 		place.setTokens(tokens);
 	}
 
-	/*
-	 * (non-Javadoc)index
+	/** 
+	 * 
 	 * 
 	 * @see petri.Petrinet#removeEdge()
 	 */
@@ -117,8 +140,8 @@ public class Simulation implements Petrinet {
 		edge.remove();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 *
 	 * 
 	 * @see petri.Petrinet#removePlace()
 	 */
@@ -128,8 +151,8 @@ public class Simulation implements Petrinet {
 		place.remove();
 	}
 
-	/*
-	 * (non-Javindexadoc)
+	/** 
+	 * 
 	 * 
 	 * @see petri.Petrinet#removeTransition()
 	 */
@@ -139,8 +162,8 @@ public class Simulation implements Petrinet {
 		transition.remove();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/** 
+	 * 
 	 * 
 	 * @see petri.Petrinet#nextStep()
 	 */
@@ -161,6 +184,12 @@ public class Simulation implements Petrinet {
 		}
 	}
 
+
+	/** 
+	 * 
+	 * 
+	 * @see petri.Petrinet#nextStep(Transition transition)
+	 */
 	@Override
 	public void nextStep(Transition transition) throws NegativeAmountOfTokenException {
 		if (transition.triggerable()) {
@@ -170,7 +199,11 @@ public class Simulation implements Petrinet {
 		}
 	}
 
-
+	/** 
+	 * 
+	 * 
+	 * @see petri.Petrinet#printState()
+	 */
 	@Override
 	public void printState() {
 		int i = 0;
