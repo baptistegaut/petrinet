@@ -5,7 +5,8 @@ public class Main {
 
 	public static void main(String[] args) throws NegativeAmountOfTokenException {
 		
-		/** Edge Test
+		/**
+		Edge Test
 		try {
 			Place p = new Place(1);
 			System.out.println(p.getTokens());
@@ -143,6 +144,7 @@ public class Main {
 		System.out.println(nTransitions);
 		sim.setTokens(sim.getPlaces().get(0), 0);
 		sim.setTokens(sim.getPlaces().get(1), 10);
+		sim.nextStep();
 		sim.nextStep();
 	}
 
